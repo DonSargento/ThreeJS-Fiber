@@ -1,0 +1,6 @@
+
+Se instaló React Three Fiber
+url:
+  https://github.com/pmndrs/react-three-fiber
+command:
+  npm install three @react-three/fiber

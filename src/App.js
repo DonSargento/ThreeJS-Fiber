@@ -1,24 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+// import Scene000 from "./scenes/Scene000";
+// import Scene001 from "./scenes/Scene001";
+import Scene002 from "./scenes/Scene002";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <Scene000 /> // 
+    // <Scene001 /> // Probando las softShadows de drei + interacción con el ratón
+    <Scene002 /> // Probando sobreponer controles
   );
 }
 
