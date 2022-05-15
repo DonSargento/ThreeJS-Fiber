@@ -1,14 +1,28 @@
 
-import { useState } from 'react';
+// import { useFrame, useThree } from '@react-three/fiber';
+import { useRef, useState } from 'react';
 import { DoubleSide } from 'three';
+// import { Matrix4 } from 'three';
 
 const Box001 = ( { pos }) => {
 
   const [ hover, setHover ] = useState( false );
   const [ active, setActive ] = useState( false );
 
+  const refBox = useRef();
+
+  // const { camera } = useThree();
+  // const matrix = new Matrix4();
+
+  // useFrame( () => {
+  //   matrix.copy( camera.matrix ).invert();
+  //   // refBox.current.quaternion.setFromRotationMatrix( matrix );
+  //   refBox.current.lookAt( camera.position.x, refBox.current.position.y, camera.position.z );
+  // } );
+
   return (
     <mesh
+      ref={ refBox }
       position={ pos }
       castShadow
       onPointerOver ={
@@ -21,7 +35,7 @@ const Box001 = ( { pos }) => {
       onPointerOut = {
         ( e ) => {
           setHover( false );
-          document.body.style.cursor = 'pointer';
+          document.body.style.cursor = 'default';
         }
       }
       onPointerDown = {

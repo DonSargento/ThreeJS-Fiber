@@ -30,13 +30,14 @@ import Plane001 from './components/scene001/Plane001'
 // ----------------------------------------------------------------
 
 const Scene001 = () => {
+
   return (
     <Canvas
       shadows
       camera={ {
         position : [ 0, 2, 5 ],
         near : 0.1,
-        far : 1000,
+        far : 1000
       } }
     >
       <color attach='background' args={ [ 0xa2b9e7 ] } />
@@ -48,8 +49,11 @@ const Scene001 = () => {
         intensity={ 1.2 }
         position={ [ 4, 6, 5 ] }
 
+        // Resolución de las sombras
         shadow-mapSize-width={ 512 }
         shadow-mapSize-height={ 512 }
+
+        // Zona en las que aparecerán las sombras ( medidas relativas a la cámara )
         shadow-camera-far={ 16 }
         shadow-camera-left={ -5 }
         shadow-camera-right={ 5 }
@@ -62,7 +66,7 @@ const Scene001 = () => {
         Se pueden agrupar los objetos <group> y transformarse en conjunto
 
       */}
-      <group position={ [ 0, -0.1, 0 ] }>
+      <group position={ [ 0, .2, 0 ] }>
         <Box001 pos={ [ 1, 1.5, 1 ] } />
         <Box001 pos={ [ 1, 1.5, -1 ] } />
         <Box001 pos={ [ -1, 1.5, 1 ] } />
@@ -72,15 +76,21 @@ const Scene001 = () => {
       <Plane001 />
 
       <OrbitControls
-        target={ [ 0, 0.8, 0 ]}
-        enablePan={ false }
-        minDistance={ 4 }
-        maxDistance={ 20 }
-        rotateSpeed={ 0.6 } // default 1
-        maxPolarAngle={ Math.PI / 2 }
-        minPolarAngle={ 0 }
+        target={ [ 0, 0.8, 0 ] }    // Ajusta la posición del target de la cámara
+        enablePan={ false }         // paneo
+        minDistance={ 4 }           // dolly mínimo
+        maxDistance={ 20 }          // dolly máximo
+        rotateSpeed={ 0.6 }         // default 1
+        minPolarAngle={ 0 }         // Polo norte
+        maxPolarAngle={ Math.PI / 2 } // Polo sur ( Ecuador en este caso )
       />
+      {/*
+        
+        Se pueden 'bakear' las sombras para que no las calcule nuevamente
+
+      */}
       <BakeShadows />
+      
     </Canvas>
   )
 }
